@@ -17,18 +17,6 @@ is_superuser
 last_login
 date_joined
 '''
-
-# meta data about the user profile
-class userMetadata(models.Model):
-    user = models.ForeignKey(User)
-    currRole = models.ForeignKey(role)
-    profilePicUrl = models.CharField(max_length=100)
-    longestStreak = models.IntegerField(default=0)   #number of days
-    longestStreakSprint = models.ForeignKey(workSprint)
-
-    class Meta:
-        db_table = 'userMetadata'
-
 # the character of different masons
 class role(models.Model):
     roleId = models.AutoField(primary_key=True)
@@ -39,6 +27,15 @@ class role(models.Model):
 
     class Meta:
         db_table = 'role'
+
+# meta data about the user profile
+class userMetadata(models.Model):
+    user = models.ForeignKey(User)
+    currRole = models.ForeignKey(role)
+    profilePicUrl = models.CharField(max_length=100)
+
+    class Meta:
+        db_table = 'userMetadata'
 
 # brick - a unit of action
 class brick(models.Model):
@@ -72,7 +69,7 @@ class pillar(models.Model):
 
 # commitment made -> construction project
 class constructionProject(models.Model):
-    upvId = models.CharField(primary_key=True)  #CK = userId + pillarId + Version number of commitment
+    upvId = models.CharField(primary_key=True, max_length=100)  #CK = userId + pillarId + Version number of commitment
     brickQty = models.IntegerField()
     constnFreq = models.IntegerField()  # n = brickQty / n days
     status = models.BooleanField(default=True)  #true = ongoing project , false = closed project
@@ -87,7 +84,7 @@ class workSprint(models.Model):
     brickQty = models.IntegerField()
     brickType = models.ForeignKey(brick)
     cpId = models.ForeignKey(constructionProject)
-    actionMetadata = models.CommaSeparatedIntegerField()    #comma separated brick ids
+    actionMetadata = models.CommaSeparatedIntegerField(max_length=500)    #comma separated brick ids
 
     class Meta:
         db_table = 'workSprint'
