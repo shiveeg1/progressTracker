@@ -19,6 +19,7 @@ from mason import views
 
 urlpatterns = [
     url(r'^$',views.index, name='indexRoute'),
+    url(r'^authenticate',views.authentication, name='authentication'),
     url(r'^admin/', admin.site.urls),
     url(r'.*',views.notFound,name='No Match'),
 ]
