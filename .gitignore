@@ -1,1 +1,4 @@
 djangoenv/*
+*.pyc
+*~
+__pycache__
