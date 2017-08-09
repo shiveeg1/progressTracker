@@ -4,3 +4,4 @@ djangoenv/*
 __pycache__
 progressTracker/.idea/*
 .idea/*
+progressTracker/db.sqlite3
