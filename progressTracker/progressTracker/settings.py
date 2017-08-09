@@ -25,7 +25,7 @@ SECRET_KEY = 'n9+5*w_r@fm9a=#p4tzh3ubgiez(k+u1rmljllq%2^^o!7)2_h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'crypster.pythonanywhere.com']
 
 
 # Application definition
