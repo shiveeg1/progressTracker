@@ -2,3 +2,5 @@ djangoenv/*
 *.pyc
 *~
 __pycache__
+progressTracker/.idea/*
+.idea/*
