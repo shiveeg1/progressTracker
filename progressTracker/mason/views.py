@@ -4,11 +4,11 @@ from django.contrib.auth import authenticate
 from django.template import RequestContext
 # Create your views here.
 def landingPage(request):
-    return render(request,'index.html',{'STATIC_URL':'../static/'})
+    return render(request,'login.html',{'STATIC_URL':'../static/'})
 
 def index(request):
     context = {'key':2};
-    return render(request,'index.html', context);
+    return render(request,'login.html', context);
 
 def notFound(request):
     return HttpResponse("Sorry page not found. Currently only base url at / is defined");
@@ -25,3 +25,6 @@ def authentication(request):
     except Exception as e:
         print(e);
         return HttpResponse("Invalid input given. Cannot authenticate user !!!");
+
+def signUp(request):
+    return render(request,'signUp.html', None);
