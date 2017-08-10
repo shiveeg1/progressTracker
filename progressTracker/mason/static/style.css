@@ -1,0 +1,8 @@
+.page-view{
+   border-radius: 5px;
+   border: solid 3px #ee6e73;
+   margin-top: 10px;
+   margin-bottom:10px;
+   min-height: 90%;
+   padding-bottom: 10px;
+}
