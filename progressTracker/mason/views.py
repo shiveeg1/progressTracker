@@ -8,11 +8,11 @@ from django.template import RequestContext
 
 
 def landingPage(request):
-    return render(request,'index.html',{'STATIC_URL':'../static/'})
+    return render(request,'login.html',{'STATIC_URL':'../static/'})
 
 def index(request):
     context = {'key':2};
-    return render(request,'index.html', context);
+    return render(request,'login.html', context);
 
 def notFound(request):
     return HttpResponse("Sorry page not found. Currently only base url at / is defined");
@@ -30,6 +30,7 @@ def authentication(request):
         print(e);
         return HttpResponse("Invalid input given. Cannot authenticate user !!!");
 
+<<<<<<< HEAD
 
 def signupVerification(username, email):
     # if user already exits return 1
@@ -41,7 +42,7 @@ def signupVerification(username, email):
         return 2
 
 
-def signup(request):
+def signUp(request):
     if request.user.is_authenticated():
         return HttpResponseRedirect('/homepage/')
     if request.method == "POST":
@@ -59,4 +60,3 @@ def signup(request):
             User.objects.create_user(username,email=email,password=password, first_name=firstName, last_name=lastName)
             return HttpResponse(0)
     return HttpResponse(1)
-
