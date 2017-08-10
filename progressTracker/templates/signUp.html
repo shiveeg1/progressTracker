@@ -1,0 +1,63 @@
+{% extends 'loginBase.html' %}
+
+{% block form %}
+
+    <div class="row signup-row">
+        <form class="col s10 m6 offset-s1 offset-m3" action="/createuser/" method="post">
+            {% csrf_token %}
+            <div class="input-field col s12">
+                <input id="firstName" type="text" name="firstName">
+                <label for="firstName">First Name</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="lastName" type="text" name="lastName">
+                <label for="lastName">Last Name</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="username" type="text" name="username" class="validate" required>
+                <label for="username">Select Username</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="password" type="password" name="password" class="validate" required>
+                <label for="password" data-success="Valid Password" data-error="Atleast 8 characters and 1 number required">Password</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="password_confirm" type="password" name="password_confirm" class="validate" required>
+                <label for="password_confirm" data-success="Password matches" data-error="Password does not match">Confirm Password</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="email" type="email" name="email" class="validate" required>
+                <label for="email" data-error="Invalid Email">Email (for recovery)</label>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Sign Up
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+    </div>
+
+<script>
+    var pattern = new RegExp(".*[0-9].*");
+
+    var passwordElem = document.getElementById('password');
+    var passwordConfirmElem = document.getElementById('password_confirm');
+
+    function passwordValidation(event){
+        if(event.target.value.length>=8 && pattern.test(event.target.value)){
+            event.target.setCustomValidity('');
+        } else {
+            event.target.setCustomValidity('Verify value');
+        }
+    }
+
+    function passwordConfirm(event){
+       if(event.target.value==passwordElem.value){
+            event.target.setCustomValidity('');
+       } else {
+            event.target.setCustomValidity('Verify value');
+       }
+    }
+
+    passwordElem.onkeyup = passwordValidation;
+    passwordConfirmElem.onkeyup = passwordConfirm;
+</script>
+{% endblock %}
